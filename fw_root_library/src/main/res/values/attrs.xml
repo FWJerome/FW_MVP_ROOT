@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustumBgTextView">
+        <!--填充色-->
+        <attr name="solidColor" format="color" />
+        <!--边框色-->
+        <attr name="strokeColor" format="color" />
+        <!--按下填充色-->
+        <attr name="solidTouchColor" format="color" />
+        <!---按下边框色-->
+        <attr name="strokeTouchColor" format="color" />
+        <!--文字按下颜色 -->
+        <attr name="textTouchColor" format="color" />
+
+        <attr name="strokeWith" format="integer" />
+        <attr name="radius" format="dimension" />
+        <attr name="topLeftRadius" format="dimension" />
+        <attr name="topRightRadius" format="dimension" />
+        <attr name="bottomLeftRadius" format="dimension" />
+        <attr name="bottomRightRadius" format="dimension" />
+
+        <!--虚线的间隙-->
+        <attr name="dashGap" format="dimension" />
+        <!--虚线的宽度-->
+        <attr name="dashWidth" format="dimension" />
+
+
+        <attr name="shapeTpe" format="enum">
+            <enum name="rectangle" value="0" />
+            <enum name="oval" value="1" />
+            <enum name="line" value="2" />
+            <enum name="ring" value="3" />
+        </attr>
+
+    </declare-styleable>
+    <declare-styleable name="FTitle">
+        <attr name="leftIcon" format="reference" />
+        <attr name="rightIcon" format="reference" />
+        <attr name="leftIconVisibility" format="boolean" />
+        <attr name="rightIconVisibility" format="boolean" />
+        <attr name="rightText" format="string" />
+        <attr name="rightTextColor" format="color" />
+        <attr name="rightTextVisibility" format="boolean" />
+        <attr name="rightTextSize" format="dimension" />
+        <attr name="title" format="string" />
+        <attr name="titleTextColor" format="color" />
+        <attr name="titleColor" format="color" />
+        <attr name="titleTextVisibility" format="boolean" />
+        <attr name="titleTextSize" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="FTechnologicalProcess">
+        <attr name="items" format="integer" />
+        <attr name="showLineIndicate" format="boolean" />
+        <attr name="showbottomIndicate" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="FTabLayout">
+        <attr name="titles" format="reference" />
+        <attr name="vpHeight" format="dimension">
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+    </declare-styleable>
+</resources>

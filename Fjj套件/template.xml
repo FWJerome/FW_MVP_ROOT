@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="Fjj套件"
+    minApi="9"
+    minBuildApi="14"
+    description="创建一个集activity,presenter,model,component,module的一套模板">
+
+    <category value="Activity" />
+    <formfactor value="Mobile" />
+
+	<parameter
+        id="activityClass"
+        name="Activity Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainActivity"
+        help="请填写页面名MainActivity" />
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_blank_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

@@ -1,0 +1,63 @@
+apply plugin: 'com.android.library'
+//添加complie生成依赖
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.1025461682@QQ.COM'//最后一个是github账号
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionName rootProject.ext.android["versionName"]
+        versionCode rootProject.ext.android["versionCode"]
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //LearnCloud为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api rootProject.ext.dependencies["constraint-layout"]
+    testImplementation rootProject.ext.dependencies["junit"]
+    androidTestImplementation rootProject.ext.dependencies["runner"]
+    androidTestImplementation rootProject.ext.dependencies["espresso-core"]
+    api rootProject.ext.dependencies["appcompat"]
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
+    api rootProject.ext.dependencies["retrofit-converter-gson"]
+    api rootProject.ext.dependencies["rxjava2"]
+    api rootProject.ext.dependencies["rxandroid2"]
+    api rootProject.ext.dependencies["dagger2"]
+    api rootProject.ext.dependencies["design"]
+    api rootProject.ext.dependencies["glide"]
+    api rootProject.ext.dependencies["cardview"]
+    api rootProject.ext.dependencies["rxlifecycle3"]
+    api rootProject.ext.dependencies["rxlifecycle3-android"]
+    api rootProject.ext.dependencies["rxlifecycle3-components"]
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    api 'com.blankj:utilcode:1.23.5'
+    // LeanCloud 基础包
+    api 'cn.leancloud.android:avoscloud-sdk:4.7.9'
+    api 'com.android.support:support-annotations:28.0.0'
+    annotationProcessor "com.android.support:support-annotations:28.0.0"
+    api 'com.github.razerdp:BasePopup:2.1.9'
+    api 'top.zibin:Luban:1.1.8'
+}
