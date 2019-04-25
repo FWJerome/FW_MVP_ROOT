@@ -9,11 +9,10 @@ import com.fwkj.fw_mvp_root.contract.MainActivityContract;
 import com.fwkj.fw_mvp_root.presenter.MainActivityPresenter;
 import com.fwkj.fw_root_library.BaseActivity;
 import com.fwkj.fw_root_library.component.DelegateComponent;
-import com.fwkj.fw_root_library.widget.BaseFragmentationActivity;
 
 import javax.inject.Inject;
 
-public class MainActivity extends BaseFragmentationActivity implements MainActivityContract.view {
+public class MainActivity extends BaseActivity implements MainActivityContract.view {
     @Inject
     MainActivityPresenter mMainActivityPresenter;
 
