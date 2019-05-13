@@ -3,6 +3,7 @@ package com.fwkj.fw_root_library.net;
 import android.content.Context;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ObjectUtils;
 import com.fwkj.fw_root_library.BuildConfig;
 import com.fwkj.fw_root_library.cookie.CookiesManager;
 import com.fwkj.fw_root_library.logging.Level;
@@ -55,6 +56,9 @@ public class NetWorkManager {
      * 初始化必要对象和参数
      */
     public void init(boolean isLog, String baseUrl) {
+        if (ObjectUtils.isEmpty(baseUrl)){
+            return;
+        }
         LoggingInterceptor.Builder builder = new LoggingInterceptor.Builder()
                 .loggable(isLog)
                 .setLevel(Level.BASIC)

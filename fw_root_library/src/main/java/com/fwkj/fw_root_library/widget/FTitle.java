@@ -8,12 +8,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.blankj.utilcode.util.ConvertUtils;
-import com.fwkj.fw_root_library.R;
-
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.blankj.utilcode.util.ConvertUtils;
+import com.fwkj.fw_root_library.R;
 
 public class FTitle extends LinearLayout {
 
@@ -78,10 +78,16 @@ public class FTitle extends LinearLayout {
         mTvRight.setTextSize(ConvertUtils.px2sp(rightTextSize));
 
         ConstraintLayout.LayoutParams imgLeftLayoutParams = (ConstraintLayout.LayoutParams) mImgLeft.getLayoutParams();
-        imgLeftLayoutParams.width = ConvertUtils.dp2px(30);
-        imgLeftLayoutParams.height = ConvertUtils.dp2px(35);
+        imgLeftLayoutParams.width = ConvertUtils.dp2px(50);
+        imgLeftLayoutParams.height = ConvertUtils.dp2px(55);
         mImgLeft.setPadding(ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10));
         mImgLeft.setLayoutParams(imgLeftLayoutParams);
+
+        ConstraintLayout.LayoutParams imgRightLayoutParams = (ConstraintLayout.LayoutParams) mImgRight.getLayoutParams();
+        imgRightLayoutParams.width = ConvertUtils.dp2px(50);
+        imgRightLayoutParams.height = ConvertUtils.dp2px(55);
+        mImgRight.setPadding(ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10));
+        mImgRight.setLayoutParams(imgRightLayoutParams);
 
         setPadding(ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10));
     }
