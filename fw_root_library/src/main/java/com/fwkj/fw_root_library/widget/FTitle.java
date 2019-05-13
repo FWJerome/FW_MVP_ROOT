@@ -47,6 +47,7 @@ public class FTitle extends LinearLayout {
 
         String title = typedArray.getString(R.styleable.FTitle_title);
         int titleColor = typedArray.getColor(R.styleable.FTitle_titleTextColor, -1);
+        int imgWidth = typedArray.getColor(R.styleable.FTitle_imgWidth, 45);
         boolean titleVisible = typedArray.getBoolean(R.styleable.FTitle_titleTextVisibility, false);
         float titleTextSize = typedArray.getDimension(R.styleable.FTitle_titleTextSize, -1);
         typedArray.recycle();
@@ -78,14 +79,14 @@ public class FTitle extends LinearLayout {
         mTvRight.setTextSize(ConvertUtils.px2sp(rightTextSize));
 
         ConstraintLayout.LayoutParams imgLeftLayoutParams = (ConstraintLayout.LayoutParams) mImgLeft.getLayoutParams();
-        imgLeftLayoutParams.width = ConvertUtils.dp2px(50);
-        imgLeftLayoutParams.height = ConvertUtils.dp2px(55);
+        imgLeftLayoutParams.width = ConvertUtils.dp2px(imgWidth);
+        imgLeftLayoutParams.height = ConvertUtils.dp2px(imgWidth);
         mImgLeft.setPadding(ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10));
         mImgLeft.setLayoutParams(imgLeftLayoutParams);
 
         ConstraintLayout.LayoutParams imgRightLayoutParams = (ConstraintLayout.LayoutParams) mImgRight.getLayoutParams();
-        imgRightLayoutParams.width = ConvertUtils.dp2px(50);
-        imgRightLayoutParams.height = ConvertUtils.dp2px(55);
+        imgRightLayoutParams.width = ConvertUtils.dp2px(imgWidth);
+        imgRightLayoutParams.height = ConvertUtils.dp2px(imgWidth);
         mImgRight.setPadding(ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10));
         mImgRight.setLayoutParams(imgRightLayoutParams);
 
