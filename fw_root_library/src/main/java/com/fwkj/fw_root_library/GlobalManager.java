@@ -92,12 +92,7 @@ public class GlobalManager {
         }
 
         public Builder crashFile(Application application, final String crashfile) {
-            new PermissionDialog() {
-                @Override
-                public void hasThis() {
                     CrashUtils.init(crashfile);
-                }
-            }.getPermission(application, PermissionConstants.STORAGE);
             return this;
         }
     }

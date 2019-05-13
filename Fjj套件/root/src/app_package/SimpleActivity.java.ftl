@@ -1,7 +1,5 @@
 package ${packageName}.view;
 
-import android.os.Bundle;
-
 import com.fwkj.fw_root_library.BaseActivity;
 import com.fwkj.fw_root_library.component.DelegateComponent;
 

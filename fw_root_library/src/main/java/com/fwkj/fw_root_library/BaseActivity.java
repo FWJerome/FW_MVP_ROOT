@@ -2,6 +2,7 @@ package com.fwkj.fw_root_library;
 
 import android.os.Bundle;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.fwkj.fw_root_library.inter.IActivity;
 import com.fwkj.fw_root_library.utils.GlobalDialog;
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;

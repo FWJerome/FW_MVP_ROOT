@@ -1,7 +1,5 @@
 apply plugin: 'com.android.library'
-//添加complie生成依赖
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.1025461682@QQ.COM'//最后一个是github账号
+
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     defaultConfig {
@@ -55,9 +53,10 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
     api 'com.blankj:utilcode:1.23.5'
     // LeanCloud 基础包
-    api 'cn.leancloud.android:avoscloud-sdk:4.7.9'
+    api 'cn.leancloud.android:avoscloud-sdk:4.7.10'
     api 'com.android.support:support-annotations:28.0.0'
     annotationProcessor "com.android.support:support-annotations:28.0.0"
     api 'com.github.razerdp:BasePopup:2.1.9'
+    api project(':fragmentation-with-androidx')
     api 'top.zibin:Luban:1.1.8'
 }

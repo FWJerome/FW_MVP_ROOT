@@ -43,8 +43,8 @@
         <attr name="rightTextVisibility" format="boolean" />
         <attr name="rightTextSize" format="dimension" />
         <attr name="title" format="string" />
-        <attr name="titleTextColor" format="color" />
         <attr name="imgWidth" format="integer" />
+        <attr name="titleTextColor" format="color" />
         <attr name="titleColor" format="color" />
         <attr name="titleTextVisibility" format="boolean" />
         <attr name="titleTextSize" format="dimension" />

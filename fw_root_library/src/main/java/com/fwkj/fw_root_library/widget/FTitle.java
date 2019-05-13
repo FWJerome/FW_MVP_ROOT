@@ -47,7 +47,7 @@ public class FTitle extends LinearLayout {
 
         String title = typedArray.getString(R.styleable.FTitle_title);
         int titleColor = typedArray.getColor(R.styleable.FTitle_titleTextColor, -1);
-        int imgWidth = typedArray.getColor(R.styleable.FTitle_imgWidth, 45);
+        int imgWidth = typedArray.getColor(R.styleable.FTitle_imgWidth, 40);
         boolean titleVisible = typedArray.getBoolean(R.styleable.FTitle_titleTextVisibility, false);
         float titleTextSize = typedArray.getDimension(R.styleable.FTitle_titleTextSize, -1);
         typedArray.recycle();

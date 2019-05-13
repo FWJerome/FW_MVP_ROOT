@@ -1,7 +1,6 @@
 package com.fwkj.fw_root_library.net;
 
 import android.net.ParseException;
-import android.util.Log;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.google.gson.JsonParseException;
@@ -40,6 +39,7 @@ public class CustomException {
         ApiException ex = null;
         if (e instanceof JsonParseException
                 || e instanceof JSONException
+                || e instanceof NullPointerException
                 || e instanceof ParseException) {
             //解析错误
             ex = new ApiException(PARSE_ERROR, "解析错误");

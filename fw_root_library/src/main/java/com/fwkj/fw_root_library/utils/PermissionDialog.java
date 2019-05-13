@@ -14,16 +14,16 @@ import java.util.List;
 
 public abstract class PermissionDialog {
     //PermissionConstants.STORAGE, PermissionConstants.LOCATION, PermissionConstants.CAMERA, PermissionConstants.PHONE
-    public void getPermission(final Context pContext, @PermissionConstants.Permission String... permissions) {
+    public void getPermission(final Activity activity, @PermissionConstants.Permission String... permissions) {
         PermissionUtils.permission(permissions)
                 .rationale(new PermissionUtils.OnRationaleListener() {
                     @Override
                     public void rationale(final ShouldRequest shouldRequest) {
-                        if (pContext == null) {
+                        if (activity == null) {
                             return;
                         }
                         LogUtils.d("申请权限");
-                        new AlertDialog.Builder(pContext)
+                        new AlertDialog.Builder(activity)
                                 .setTitle("请求获取以下权限")
                                 .setMessage("请前往设置打开相关权限")
                                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
@@ -54,11 +54,11 @@ public abstract class PermissionDialog {
                     public void onDenied(List<String> permissionsDeniedForever,
                                          List<String> permissionsDenied) {
                         if (!permissionsDeniedForever.isEmpty()) {
-                            if (pContext == null) {
+                            if (activity == null) {
                                 return;
                             }
                             LogUtils.d("设置需要获取 " + permissionsDeniedForever + ", " + permissionsDenied);
-                            new AlertDialog.Builder(pContext)
+                            new AlertDialog.Builder(activity)
                                     .setTitle("请求获取以下权限")
                                     .setMessage("请前往设置打开相关权限")
                                     .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
