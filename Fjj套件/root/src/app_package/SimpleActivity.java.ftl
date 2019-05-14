@@ -1,6 +1,7 @@
 package ${packageName}.view;
 
 import com.fwkj.fw_root_library.BaseActivity;
+import android.os.Bundle;
 import com.fwkj.fw_root_library.component.DelegateComponent;
 
 import javax.inject.Inject;
