@@ -16,28 +16,33 @@ public class CommScheduleProvider {
      * 统一线程处理
      *
      * @param <T>
+     * @param isShowDialog
      * @return
      */
-    public static <T> ObservableTransformer<T, T> rxSchedulerHelper() {    //compose简化线程
+    public static <T> ObservableTransformer<T, T> rxSchedulerHelper(final Boolean isShowDialog) {    //compose简化线程
         return new ObservableTransformer<T, T>() {
             @Override
             public ObservableSource<T> apply(Observable<T> upstream) {
-                return upstream.subscribeOn(getIo())
+                return upstream.subscribeOn(getIo(isShowDialog))
                         .observeOn(AndroidSchedulers.mainThread())
                         .doFinally(new Action() {
                             @Override
                             public void run() throws Exception {
-                                GlobalDialog.hide();
-                                LogUtils.d("关闭进度框");
+                                if (isShowDialog) {
+                                    GlobalDialog.hide();
+                                    LogUtils.d("关闭进度框");
+                                }
                             }
                         });
             }
         };
     }
 
-    private static Scheduler getIo() {
-        GlobalDialog.show();
-        LogUtils.d("显示进度框");
+    private static Scheduler getIo(Boolean isShowDialog) {
+        if (isShowDialog) {
+            GlobalDialog.show();
+            LogUtils.d("显示进度框");
+        }
         return Schedulers.io();
     }
 }

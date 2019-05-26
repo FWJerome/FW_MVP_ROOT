@@ -5,32 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.fwkj.fw_root_library.widget.FTitle
-        android:id="@+id/title"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcy"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:leftIcon="@mipmap/ic_launcher"
-        app:leftIconVisibility="true"
-        app:rightIcon="@mipmap/ic_launcher"
-        app:rightIconVisibility="true"
-        app:title="首页"
-        app:titleColor="@color/colorWhite"
-        app:titleTextSize="20sp"
-        app:titleTextVisibility="true" />
-
-    <com.fwkj.fw_root_library.widget.FTitle
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        app:imgWidth="45"
-        app:leftIcon="@mipmap/ic_launcher"
-        app:leftIconVisibility="true"
-        app:rightIcon="@mipmap/ic_launcher"
-        app:rightIconVisibility="true"
-        app:title="首页"
-        app:titleColor="@color/colorWhite"
-        app:titleTextSize="20sp"
-        app:titleTextVisibility="true" />
+        android:layout_height="wrap_content" />
 </LinearLayout>
