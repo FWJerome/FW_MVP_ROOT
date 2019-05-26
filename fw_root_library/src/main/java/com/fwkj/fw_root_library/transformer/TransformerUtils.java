@@ -16,7 +16,7 @@ public class TransformerUtils {
      * @Param
      **/
     public static <T> ObservableTransformer<T, T> transformerUtil(final LifecycleProvider<ActivityEvent> view) {
-        return transformerUtil(view, true);
+        return transformerUtil(view, false);
     }
 
     /**
