@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.blankj.utilcode.util.ConvertUtils;
@@ -19,6 +20,7 @@ import com.fwkj.fw_root_library.R;
 
 public class FTitle extends LinearLayout {
 
+    private CardView mCardView;
     private LinearLayout mLlPull;
     private TextView mTvProgress;
     private AppCompatImageView mImgLeft;
@@ -51,6 +53,8 @@ public class FTitle extends LinearLayout {
 
         String progressText = typedArray.getString(R.styleable.FTitle_progressText);
 
+        int titleBackGroundColor = typedArray.getColor(R.styleable.FTitle_titleBackGroundColor, -1);
+
         String title = typedArray.getString(R.styleable.FTitle_title);
         int titleColor = typedArray.getColor(R.styleable.FTitle_titleTextColor, -1);
         int imgWidth = typedArray.getColor(R.styleable.FTitle_imgWidth, 40);
@@ -65,6 +69,7 @@ public class FTitle extends LinearLayout {
         mTvRight = view.findViewById(R.id.tvRight);
         mTvProgress = view.findViewById(R.id.tvProgress);
         mLlPull = view.findViewById(R.id.llPull);
+        mCardView = view.findViewById(R.id.cardView);
 
         mImgLeft.setVisibility(leftIconVisible ? VISIBLE : GONE);
         mTvTitle.setVisibility(titleVisible ? VISIBLE : GONE);
@@ -77,6 +82,8 @@ public class FTitle extends LinearLayout {
         if (rightIcon != -1) {
             mImgRight.setImageResource(rightIcon);
         }
+
+        mCardView.setCardBackgroundColor(titleBackGroundColor);
 
         mTvTitle.setText(title);
         mTvTitle.setTextColor(titleColor);
