@@ -3,10 +3,12 @@ package com.fwkj.fw_root_library.widget;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -17,6 +19,8 @@ import com.fwkj.fw_root_library.R;
 
 public class FTitle extends LinearLayout {
 
+    private LinearLayout mLlPull;
+    private TextView mTvProgress;
     private AppCompatImageView mImgLeft;
     private AppCompatTextView mTvRight;
     private AppCompatTextView mTvTitle;
@@ -45,6 +49,8 @@ public class FTitle extends LinearLayout {
         boolean rightVisible = typedArray.getBoolean(R.styleable.FTitle_rightTextVisibility, false);
         float rightTextSize = typedArray.getDimension(R.styleable.FTitle_rightTextSize, -1);
 
+        String progressText = typedArray.getString(R.styleable.FTitle_progressText);
+
         String title = typedArray.getString(R.styleable.FTitle_title);
         int titleColor = typedArray.getColor(R.styleable.FTitle_titleTextColor, -1);
         int imgWidth = typedArray.getColor(R.styleable.FTitle_imgWidth, 40);
@@ -57,6 +63,8 @@ public class FTitle extends LinearLayout {
         mImgRight = view.findViewById(R.id.imgRight);
         mTvTitle = view.findViewById(R.id.tvTitle);
         mTvRight = view.findViewById(R.id.tvRight);
+        mTvProgress = view.findViewById(R.id.tvProgress);
+        mLlPull = view.findViewById(R.id.llPull);
 
         mImgLeft.setVisibility(leftIconVisible ? VISIBLE : GONE);
         mTvTitle.setVisibility(titleVisible ? VISIBLE : GONE);
@@ -78,6 +86,8 @@ public class FTitle extends LinearLayout {
         mTvRight.setTextColor(rightColor);
         mTvRight.setTextSize(ConvertUtils.px2sp(rightTextSize));
 
+        mTvProgress.setText(progressText);
+
         ConstraintLayout.LayoutParams imgLeftLayoutParams = (ConstraintLayout.LayoutParams) mImgLeft.getLayoutParams();
         imgLeftLayoutParams.width = ConvertUtils.dp2px(imgWidth);
         imgLeftLayoutParams.height = ConvertUtils.dp2px(imgWidth);
@@ -89,8 +99,6 @@ public class FTitle extends LinearLayout {
         imgRightLayoutParams.height = ConvertUtils.dp2px(imgWidth);
         mImgRight.setPadding(ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10));
         mImgRight.setLayoutParams(imgRightLayoutParams);
-
-        setPadding(ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10), ConvertUtils.dp2px(10));
     }
 
     public void setLeftFinish(final Activity activity) {
@@ -128,5 +136,27 @@ public class FTitle extends LinearLayout {
 
     public void setRightVisible(boolean b) {
         mTvRight.setVisibility(b ? VISIBLE : GONE);
+    }
+
+    public void pullAnimator() {
+        pullAnimator(5000);
+    }
+
+    public void pullAnimator(final int duration) {
+        if (mLlPull.getVisibility() != VISIBLE) {
+            mLlPull.setVisibility(VISIBLE);
+        }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                closePull();
+            }
+        }, duration);
+    }
+
+    public void closePull() {
+        if (mLlPull.getVisibility() != GONE) {
+            mLlPull.setVisibility(GONE);
+        }
     }
 }

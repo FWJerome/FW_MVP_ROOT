@@ -16,6 +16,8 @@ import com.fwkj.fw_mvp_root.presenter.MainActivityPresenter;
 import com.fwkj.fw_root_library.BaseActivity;
 import com.fwkj.fw_root_library.component.DelegateComponent;
 import com.fwkj.fw_root_library.utils.LinearLayoutDecoration;
+import com.fwkj.fw_root_library.widget.FTitle;
+import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +28,14 @@ public class MainActivity extends BaseActivity implements MainActivityContract.v
     @Inject
     MainActivityPresenter mMainActivityPresenter;
     private RecyclerView mRcy;
+    private FTitle mTitle;
 
     @Override
     public void initView(Bundle savedInstanceState) {
+        ImmersionBar.with(this).init();
         mRcy = findViewById(R.id.rcy);
+        mTitle = findViewById(R.id.title);
+        mTitle.pullAnimator();
     }
 
     @Override
@@ -40,6 +46,7 @@ public class MainActivity extends BaseActivity implements MainActivityContract.v
         List<String> strings = new ArrayList<>();
         strings.add("有对话框的请求");
         strings.add("无对话框的请求");
+        strings.add("关闭标题对话");
         adapter.setNewData(strings);
         mRcy.setAdapter(adapter);
 
@@ -52,6 +59,9 @@ public class MainActivity extends BaseActivity implements MainActivityContract.v
                         break;
                     case 1:
                         mMainActivityPresenter.noNetDialog();
+                        break;
+                    case 2:
+                        mTitle.closePull();
                         break;
                     default:
                 }

@@ -5,6 +5,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.fwkj.fw_root_library.widget.FTitle
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:leftIcon="@mipmap/ic_launcher"
+        app:leftIconVisibility="true"
+        app:progressText="定位中..."
+        app:titleColor="@color/colorWhite"
+        app:titleTextVisibility="true" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcy"
         android:layout_width="match_parent"

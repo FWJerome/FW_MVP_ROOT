@@ -37,7 +37,7 @@ public class MainActivityPresenter {
                 emitter.onComplete();
             }
         })
-                .compose(TransformerUtils.<Boolean>transformerUtil((LifecycleProvider<ActivityEvent>) view))
+                .compose(TransformerUtils.<Boolean>transformerUtil((LifecycleProvider<ActivityEvent>) view, true))
                 .subscribe(new BaseObserver<Boolean>() {
                     @Override
                     public void fOnNext(Boolean pO) {

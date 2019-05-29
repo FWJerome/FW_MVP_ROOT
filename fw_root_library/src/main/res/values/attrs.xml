@@ -39,6 +39,7 @@
         <attr name="leftIconVisibility" format="boolean" />
         <attr name="rightIconVisibility" format="boolean" />
         <attr name="rightText" format="string" />
+        <attr name="progressText" format="string" />
         <attr name="rightTextColor" format="color" />
         <attr name="rightTextVisibility" format="boolean" />
         <attr name="rightTextSize" format="dimension" />
