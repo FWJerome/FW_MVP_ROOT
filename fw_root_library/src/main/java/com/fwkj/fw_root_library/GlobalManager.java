@@ -1,17 +1,17 @@
 package com.fwkj.fw_root_library;
 
-import android.Manifest;
 import android.app.Application;
-import android.content.pm.PackageManager;
+
+import androidx.annotation.RequiresPermission;
 
 import com.avos.avoscloud.AVObject;
-import com.blankj.utilcode.constant.PermissionConstants;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.Utils;
 import com.fwkj.fw_root_library.utils.ImageLoader;
-import com.fwkj.fw_root_library.utils.PermissionDialog;
 
 import java.util.List;
+
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 /**
  * @author 付俊杰
@@ -91,8 +91,9 @@ public class GlobalManager {
             ImageLoader.getInstance(application);
         }
 
+        @RequiresPermission(WRITE_EXTERNAL_STORAGE)
         public Builder crashFile(Application application, final String crashfile) {
-                    CrashUtils.init(crashfile);
+            CrashUtils.init(crashfile);
             return this;
         }
     }
