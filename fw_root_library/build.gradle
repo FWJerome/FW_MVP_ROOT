@@ -51,7 +51,7 @@ dependencies {
     api rootProject.ext.dependencies["rxlifecycle3-components"]
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
-    api 'com.blankj:utilcode:1.23.5'
+    api 'com.blankj:utilcodex:1.24.7'
     // LeanCloud 基础包
     api 'cn.leancloud.android:avoscloud-sdk:4.7.10'
     api 'com.android.support:support-annotations:28.0.0'
