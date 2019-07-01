@@ -53,10 +53,10 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
     api 'com.blankj:utilcodex:1.24.7'
     // LeanCloud 基础包
-    api 'cn.leancloud.android:avoscloud-sdk:4.7.10'
+    api 'cn.leancloud.android:avoscloud-sdk:4.7.12'
     api 'com.android.support:support-annotations:28.0.0'
     annotationProcessor "com.android.support:support-annotations:28.0.0"
-    api 'com.github.razerdp:BasePopup:2.1.9'
+    api 'com.github.razerdp:BasePopup:2.2.1'
     api project(':fragmentation-with-androidx')
     api 'top.zibin:Luban:1.1.8'
 }
