@@ -36,6 +36,7 @@ public class MainActivity extends BaseActivity implements MainActivityContract.v
         mRcy = findViewById(R.id.rcy);
         mTitle = findViewById(R.id.title);
         mTitle.pullAnimator();
+        mMainActivityPresenter.getCode();
     }
 
     @Override

@@ -2,8 +2,6 @@ package com.fwkj.fw_root_library.net;
 
 import android.content.Context;
 
-import com.blankj.utilcode.util.LogUtils;
-import com.fwkj.fw_root_library.BuildConfig;
 import com.fwkj.fw_root_library.cookie.CookiesManager;
 import com.fwkj.fw_root_library.logging.Level;
 import com.fwkj.fw_root_library.logging.LoggingInterceptor;
@@ -59,7 +57,6 @@ public class NetWorkManager {
                 .loggable(isLog)
                 .setLevel(Level.BASIC)
                 .log(Platform.INFO)
-                .loggable(BuildConfig.DEBUG)
                 .request("Request")
                 .response("Response");
 //                .addHeader("versionMsg", BuildConfig.VERSION_NAME);
@@ -84,13 +81,13 @@ public class NetWorkManager {
 //                    .readTimeout(10, TimeUnit.SECONDS)
 //                    .writeTimeout(10, TimeUnit.SECONDS)
 //                    .build();
-            // 初始化Retrofit
-            retrofit = new Retrofit.Builder()
-                    .client(client)
-                    .baseUrl(baseUrl)
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+        // 初始化Retrofit
+        retrofit = new Retrofit.Builder()
+                .client(client)
+                .baseUrl(baseUrl)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 
     private static OkHttpClient getUnsafeOkHttpClient() {

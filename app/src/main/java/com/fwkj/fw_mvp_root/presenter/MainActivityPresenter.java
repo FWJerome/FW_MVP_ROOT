@@ -2,6 +2,7 @@ package com.fwkj.fw_mvp_root.presenter;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.fwkj.fw_mvp_root.contract.MainActivityContract;
+import com.fwkj.fw_mvp_root.contract.UserBean;
 import com.fwkj.fw_mvp_root.model.MainActivityModel;
 import com.fwkj.fw_root_library.net.BaseObserver;
 import com.fwkj.fw_root_library.transformer.TransformerUtils;
@@ -67,6 +68,16 @@ public class MainActivityPresenter {
                     @Override
                     public void fOnNext(Boolean pO) {
                         ToastUtils.showLong("请求结束");
+                    }
+                });
+    }
+
+    public void getCode() {
+        model.getCode()
+                .compose(TransformerUtils.<UserBean>transformerUtil((LifecycleProvider<ActivityEvent>) view))
+                .subscribe(new BaseObserver<UserBean>() {
+                    @Override
+                    public void fOnNext(UserBean pO) {
                     }
                 });
     }

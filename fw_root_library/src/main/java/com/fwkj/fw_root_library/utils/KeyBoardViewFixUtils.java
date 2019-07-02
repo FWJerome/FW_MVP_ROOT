@@ -127,7 +127,7 @@ public class KeyBoardViewFixUtils {
      * 注销
      */
     public void unFix() {
-        KeyboardUtils.unregisterSoftInputChangedListener(activity);
+//        KeyboardUtils.unregisterSoftInputChangedListener(activity);
     }
 
     public void attchView(ScrollView scroll, EditText... views) {
