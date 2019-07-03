@@ -34,6 +34,7 @@
 
     </declare-styleable>
     <declare-styleable name="FTitle">
+        <attr name="titleHeightPx" format="integer"/>
         <attr name="leftIcon" format="reference" />
         <attr name="rightIcon" format="reference" />
         <attr name="leftIconVisibility" format="boolean" />

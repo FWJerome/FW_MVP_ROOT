@@ -73,12 +73,6 @@ public class MainActivityPresenter {
     }
 
     public void getCode() {
-        model.getCode()
-                .compose(TransformerUtils.<UserBean>transformerUtil((LifecycleProvider<ActivityEvent>) view))
-                .subscribe(new BaseObserver<UserBean>() {
-                    @Override
-                    public void fOnNext(UserBean pO) {
-                    }
-                });
+
     }
 }

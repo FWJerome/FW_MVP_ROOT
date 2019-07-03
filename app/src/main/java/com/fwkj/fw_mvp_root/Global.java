@@ -12,7 +12,7 @@ public class Global implements IGlobalConfig {
     public void applyOptions(Application application, @NonNull GlobalManager.Builder builder) {
         builder
                 .baseUrl("https://www.dabeicar.com/api/")
-
+                .debugLog(true)
                 .allowBlankjUtilcode(application)
                 .build();
     }

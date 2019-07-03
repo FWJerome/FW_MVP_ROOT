@@ -9,11 +9,16 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleBackGroundColor="#ff00ff"
+        app:imgWidth="60"
         app:leftIcon="@mipmap/ic_launcher"
         app:leftIconVisibility="true"
         app:progressText="定位中..."
+        app:title="测试"
+        app:titleBackGroundColor="#ff00ff"
         app:titleColor="@color/colorWhite"
+        app:titleHeightPx="200"
+        app:titleTextColor="@color/colorWhite"
+        app:titleTextSize="20sp"
         app:titleTextVisibility="true" />
 
     <androidx.recyclerview.widget.RecyclerView

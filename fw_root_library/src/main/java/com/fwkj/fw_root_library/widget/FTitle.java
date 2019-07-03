@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -39,6 +40,8 @@ public class FTitle extends LinearLayout {
     public FTitle(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.FTitle);
+
+        int titleHeight = typedArray.getInteger(R.styleable.FTitle_titleHeightPx,-2);
 
         int leftIcon = typedArray.getResourceId(R.styleable.FTitle_leftIcon, -1);
         boolean leftIconVisible = typedArray.getBoolean(R.styleable.FTitle_leftIconVisibility, false);
@@ -84,6 +87,8 @@ public class FTitle extends LinearLayout {
         }
 
         mCardView.setCardBackgroundColor(titleBackGroundColor);
+
+        mCardView.getLayoutParams().height = titleHeight;
 
         mTvTitle.setText(title);
         mTvTitle.setTextColor(titleColor);
