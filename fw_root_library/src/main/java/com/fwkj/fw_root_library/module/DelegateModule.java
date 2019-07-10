@@ -38,7 +38,7 @@ public class DelegateModule {
     @Provides
     public Retrofit getRetrofit() {
         NetWorkManager instance = NetWorkManager.getInstance(application);
-        instance.init(manager.isDebugLog(), manager.getUrl());
+        instance.init(manager.isDebugLog(), manager.getUrl(), manager.getInterceptor());
         return instance.getRetrofit();
     }
 

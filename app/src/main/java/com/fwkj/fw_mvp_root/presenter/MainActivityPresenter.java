@@ -12,6 +12,7 @@ import com.trello.rxlifecycle3.android.ActivityEvent;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.functions.Consumer;
 
 public class MainActivityPresenter {
     private MainActivityContract.view view;
@@ -73,6 +74,13 @@ public class MainActivityPresenter {
     }
 
     public void getCode() {
+        model.getCode()
+                .compose(TransformerUtils.<UserBean>transformerUtil((LifecycleProvider<ActivityEvent>) view))
+                .subscribe(new Consumer<UserBean>() {
+                    @Override
+                    public void accept(UserBean userBean) throws Exception {
 
+                    }
+                });
     }
 }

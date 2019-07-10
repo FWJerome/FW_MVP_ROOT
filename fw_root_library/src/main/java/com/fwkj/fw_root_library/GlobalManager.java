@@ -7,9 +7,12 @@ import androidx.annotation.RequiresPermission;
 import com.avos.avoscloud.AVObject;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.Utils;
+import com.fwkj.fw_root_library.logging.LoggingInterceptor;
 import com.fwkj.fw_root_library.utils.ImageLoader;
 
 import java.util.List;
+
+import okhttp3.Interceptor;
 
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
@@ -25,13 +28,19 @@ public class GlobalManager {
     private String avkey;
     private boolean debugLog;
     private String url;
+    private LoggingInterceptor.BeforeRequestInter interceptor;
 
     public GlobalManager(Builder builder) {
         this.avid = builder.avid;
+        this.interceptor = builder.interceptor;
         this.avObjects = builder.avObjects;
         this.avkey = builder.avkey;
         this.debugLog = builder.debugLog;
         this.url = builder.url;
+    }
+
+    public LoggingInterceptor.BeforeRequestInter getInterceptor() {
+        return interceptor;
     }
 
     public boolean isDebugLog() {
@@ -60,11 +69,17 @@ public class GlobalManager {
         List<Class<? extends AVObject>> avObjects;
         boolean debugLog;
         String url;
+        LoggingInterceptor.BeforeRequestInter interceptor;
 
         public Builder avaccount(String avid, String avkey, List<Class<? extends AVObject>> avObjects) {
             this.avid = avid;
             this.avkey = avkey;
             this.avObjects = avObjects;
+            return this;
+        }
+
+        public Builder setInterceptor(LoggingInterceptor.BeforeRequestInter interceptor) {
+            this.interceptor = interceptor;
             return this;
         }
 

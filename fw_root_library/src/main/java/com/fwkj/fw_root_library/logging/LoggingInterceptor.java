@@ -22,16 +22,28 @@ import okhttp3.internal.platform.Platform;
 public class LoggingInterceptor implements Interceptor {
 
     private final boolean isDebug;
-    private final Builder builder;
+    private Builder builder;
+    private BeforeRequestInter beforeRequestInter;
 
     private LoggingInterceptor(Builder builder) {
         this.builder = builder;
         this.isDebug = builder.isDebug;
     }
 
+    public void setBeforeRequestInter(BeforeRequestInter beforeRequestInter) {
+        this.beforeRequestInter = beforeRequestInter;
+    }
+
+    public interface BeforeRequestInter {
+        LoggingInterceptor.Builder intercept(Chain chain, LoggingInterceptor.Builder builder);
+    }
+
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
+        if (beforeRequestInter != null) {
+            builder = beforeRequestInter.intercept(chain, builder);
+        }
         HashMap<String, String> headerMap = builder.getHeaders();
         if (headerMap.size() > 0) {
             Request.Builder requestBuilder = request.newBuilder();
@@ -49,7 +61,8 @@ public class LoggingInterceptor implements Interceptor {
                 String value = queryMap.get(key);
                 httpUrlBuilder.addQueryParameter(key, value);
             }
-            request = request.newBuilder().url(httpUrlBuilder.build()).build();
+            Request.Builder builder = request.newBuilder().url(httpUrlBuilder.build());
+            request = builder.build();
         }
 
         if (!isDebug || builder.getLevel() == Level.NONE) {
@@ -119,7 +132,8 @@ public class LoggingInterceptor implements Interceptor {
             return response;
         }
 
-        return response.newBuilder().
+        Response.Builder builder = response.newBuilder();
+        return builder.
                 body(body).
                 build();
     }

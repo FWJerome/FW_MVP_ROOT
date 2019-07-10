@@ -57,6 +57,7 @@ public class MainActivity extends BaseActivity implements MainActivityContract.v
                 switch (position) {
                     case 0:
                         mMainActivityPresenter.netDialog();
+                        mMainActivityPresenter.getCode();
                         break;
                     case 1:
                         mMainActivityPresenter.noNetDialog();

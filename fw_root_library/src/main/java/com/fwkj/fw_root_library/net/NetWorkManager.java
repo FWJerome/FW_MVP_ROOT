@@ -26,7 +26,9 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Response;
 import okhttp3.internal.platform.Platform;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -52,35 +54,22 @@ public class NetWorkManager {
     /**
      * 初始化必要对象和参数
      */
-    public void init(boolean isLog, String baseUrl) {
+    public void init(boolean isLog, String baseUrl, LoggingInterceptor.BeforeRequestInter beforeRequestInter) {
         LoggingInterceptor.Builder builder = new LoggingInterceptor.Builder()
                 .loggable(isLog)
                 .setLevel(Level.BASIC)
                 .log(Platform.INFO)
                 .request("Request")
                 .response("Response");
-//                .addHeader("versionMsg", BuildConfig.VERSION_NAME);
-//                .addHeader("version", BuildConfig.VERSION_NAME)
-//                .addQueryParam("query", "0");
-//              .logger(new Logger() {
-//                  @Override
-//                  public void log(int level, String tag, String msg) {
-//                      Log.w(tag, msg);
-//                  }
-//              }
+        LoggingInterceptor interceptor = builder.build();
+        interceptor.setBeforeRequestInter(beforeRequestInter);
         // 初始化okhttp
         OkHttpClient client = getUnsafeOkHttpClient().newBuilder()
-                .addInterceptor(builder.build())
+                .addInterceptor(interceptor)
                 .cookieJar(new CookiesManager(mContext))
                 .readTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .build();
-//            OkHttpClient client = new OkHttpClient.Builder()
-//                    .addInterceptor(builder.build())
-//                    .cookieJar(new CookiesManager(mContext))
-//                    .readTimeout(10, TimeUnit.SECONDS)
-//                    .writeTimeout(10, TimeUnit.SECONDS)
-//                    .build();
         // 初始化Retrofit
         retrofit = new Retrofit.Builder()
                 .client(client)
