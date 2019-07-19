@@ -2,7 +2,6 @@ package com.jerome.ftablayout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
@@ -10,11 +9,14 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+
 import java.util.List;
 
 public class FTabView<T extends FTabEntity> extends RecyclerView {
 
     private FTabAdapter<T> mCustomAdapter;
+    private FCustomDecoration mFCustomDecoration = new FCustomDecoration();
 
     public FTabView(@NonNull Context context) {
         this(context, null);
@@ -39,27 +41,33 @@ public class FTabView<T extends FTabEntity> extends RecyclerView {
         return mCustomAdapter;
     }
 
+    public FCustomDecoration getFCustomDecoration() {
+        return mFCustomDecoration;
+    }
+
+    public void setFCustomDecoration(FCustomDecoration FCustomDecoration) {
+        mFCustomDecoration = FCustomDecoration;
+    }
+
     public void setCustomAdapter(FTabAdapter<T> customAdapter) {
         mCustomAdapter = customAdapter;
     }
 
     public static class Builder<T extends FTabEntity> {
-        List<T> datas;
-        int pace;
-        int paceColor;
-        int items;
+        private FCustomDecoration customDecoration;
+        private List<T> datas;
+        private FTabView<T> tabView;
+        private FTabAdapter<T> customAdapter;
 
-        public void build(FTabView<T> tabView) {
-            if (paceColor == 0) {
-                paceColor = Color.parseColor("#ffffff");
-            }
-            //这里进行recycleview的刷新
-            if (items == 0) {
-                items = 4;
-            }
-            FTabAdapter<T> customAdapter = tabView.getCustomAdapter();
+        public Builder(FTabView<T> tabView) {
+            this.tabView = tabView;
+            customAdapter = tabView.getCustomAdapter();
+            customDecoration = tabView.getFCustomDecoration();
+        }
+
+        public void build() {
             tabView.setAdapter(customAdapter);
-            tabView.addItemDecoration(new FCustomDecoration(pace, paceColor));
+            tabView.addItemDecoration(customDecoration);
             customAdapter.setNewData(datas);
         }
 
@@ -69,17 +77,27 @@ public class FTabView<T extends FTabEntity> extends RecyclerView {
         }
 
         public Builder<T> showSpaceDp2Px(int pace) {
-            this.pace = pace;
+            customDecoration.setPace(pace);
             return this;
         }
 
         public Builder<T> showSpaceColor(int paceColor) {
-            this.paceColor = paceColor;
+            customDecoration.setPaceColor(paceColor);
             return this;
         }
 
         public Builder<T> showItems(int items) {
-            this.items = items;
+            customDecoration.setItems(items);
+            return this;
+        }
+
+        public Builder<T> spaceTopAndBottom(int topAndBottom) {
+            customDecoration.setTopAndBottom(topAndBottom);
+            return this;
+        }
+
+        public Builder addOnClickListener(BaseQuickAdapter.OnItemClickListener clickListener) {
+            customAdapter.setOnItemClickListener(clickListener);
             return this;
         }
     }

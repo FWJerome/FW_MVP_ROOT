@@ -4,28 +4,69 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blankj.utilcode.util.ConvertUtils;
-import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ScreenUtils;
 
 public class FCustomDecoration extends RecyclerView.ItemDecoration {
 
+    private int topAndBottom;
+    private int items;
     private int paceColor;
     private int pace;
 
-    public FCustomDecoration( int pace, int paceColor) {
-        this.pace = pace;
+    public FCustomDecoration() {
+    }
+
+    public int getTopAndBottom() {
+        return topAndBottom;
+    }
+
+    public void setTopAndBottom(int topAndBottom) {
+        this.topAndBottom = topAndBottom;
+    }
+
+    public int getItems() {
+        return items;
+    }
+
+    public void setItems(int items) {
+        this.items = items;
+    }
+
+    public int getPaceColor() {
+        return paceColor;
+    }
+
+    public void setPaceColor(int paceColor) {
         this.paceColor = paceColor;
+    }
+
+    public int getPace() {
+        return pace;
+    }
+
+    public void setPace(int pace) {
+        this.pace = pace;
     }
 
     //设置ItemView的内嵌偏移长度（inset）
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
+        outRect.set(0, topAndBottom, 0, topAndBottom);
+        if (items == 0) {
+            items = 4;
+        }
+        int itemWidth = parent.getMeasuredWidth() / items;
+        for (int i = 0; i < parent.getChildCount(); i++) {
+            View childAt = parent.getChildAt(i);
+            ViewGroup.LayoutParams layoutParams = childAt.getLayoutParams();
+            layoutParams.width = itemWidth;
+        }
     }
 
     // 在子视图上设置绘制范围，并绘制内容
@@ -52,10 +93,10 @@ public class FCustomDecoration extends RecyclerView.ItemDecoration {
             final View child = parent.getChildAt(i);
             // 矩形左上顶点 = (ItemView的左边界,ItemView的下边界)
             //因为内边距已经把这个间隔加入，所以只用画空出来的间隔就好
-            final int left = child.getRight() - mDivider/2;
+            final int left = child.getRight() - mDivider / 2;
             final int top = child.getTop();
             // 矩形右下顶点 = (ItemView的右边界,矩形的下边界)
-            final int right = child.getRight() + mDivider/2;
+            final int right = child.getRight() + mDivider / 2;
             final int bottom = child.getBottom();
             // 通过Canvas绘制矩形（分割线）
             c.drawRect(left, top, right, bottom, paint);
