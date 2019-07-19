@@ -9,6 +9,7 @@ android {
         versionCode rootProject.ext.android["versionCode"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -59,4 +60,5 @@ dependencies {
     api 'com.github.razerdp:BasePopup:2.2.1'
     api project(':fragmentation-with-androidx')
     api 'top.zibin:Luban:1.1.8'
+    api 'com.android.support:multidex:1.0.3'
 }

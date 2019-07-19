@@ -1,6 +1,9 @@
 package com.fwkj.fw_root_library;
 
-import android.app.Application;
+import android.content.Context;
+
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
 
 import com.fwkj.fw_root_library.component.DelegateComponent;
 import com.fwkj.fw_root_library.delegate.GlobalDelegate;
@@ -8,7 +11,7 @@ import com.fwkj.fw_root_library.inter.IGlobalConfig;
 
 import me.yokeyword.fragmentation.Fragmentation;
 
-public abstract class Root_App extends Application {
+public abstract class Root_App extends MultiDexApplication {
     private static GlobalDelegate mDelegate;
 
     @Override
@@ -24,6 +27,12 @@ public abstract class Root_App extends Application {
                 .stackViewMode(Fragmentation.BUBBLE)
                 .debug(BuildConfig.DEBUG)
                 .install();
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     /**
