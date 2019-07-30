@@ -11,7 +11,11 @@ import ${packageName}.component.Dagger${activityClass}Component;
 import ${packageName}.component.${activityClass}Module;
 import ${packageName}.contract.${activityClass}Contract;
 import ${packageName}.presenter.${activityClass}Presenter;
-
+/**
+*Created by 付俊杰
+*email:1025461682@qq.com
+*phone:17684220995
+*/
 public class ${activityClass} extends BaseActivity implements ${activityClass}Contract.view {
     @Inject
     ${activityClass}Presenter m${activityClass}Presenter;
