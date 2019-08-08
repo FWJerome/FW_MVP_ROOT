@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.fwkj.fw_mvp_root.R;
 import com.jerome.ftablayout.FTabEntity;
@@ -44,7 +45,7 @@ public class TabActivity extends AppCompatActivity {
                 .addOnClickListener(new BaseQuickAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+                        ToastUtils.showShort("asd");
                     }
                 })
                 .build();

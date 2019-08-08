@@ -3,10 +3,10 @@ package com.fwkj.fw_root_library.widget;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -41,7 +41,8 @@ public class FTitle extends LinearLayout {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.FTitle);
 
-        int titleHeight = typedArray.getInteger(R.styleable.FTitle_titleHeightPx,-2);
+        int titleHeight = typedArray.getInteger(R.styleable.FTitle_titleHeightPx, -2);
+        boolean titleIsBlod = typedArray.getBoolean(R.styleable.FTitle_titleIsBlod, false);
 
         int leftIcon = typedArray.getResourceId(R.styleable.FTitle_leftIcon, -1);
         boolean leftIconVisible = typedArray.getBoolean(R.styleable.FTitle_leftIconVisibility, false);
@@ -93,6 +94,9 @@ public class FTitle extends LinearLayout {
         mTvTitle.setText(title);
         mTvTitle.setTextColor(titleColor);
         mTvTitle.setTextSize(ConvertUtils.px2sp(titleTextSize));
+        if (titleIsBlod){
+            mTvTitle.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        }
 
         mTvRight.setText(rightText);
         mTvRight.setTextColor(rightColor);
