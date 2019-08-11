@@ -1,40 +1,85 @@
 package com.fwkj.fw_root_library.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
+import com.blankj.utilcode.util.ObjectUtils;
 import com.fwkj.fw_root_library.GlideApp;
+import com.fwkj.fw_root_library.GlideRequest;
 
 public class ImageLoader {
-    private static ImageLoader mImageLoader;
-    private static Context mContext;
+    private Builder builder;
+    private GlideRequest<Drawable> mGlideRequest;
 
-    public ImageLoader(Context context) {
-        mContext = context;
+    public ImageLoader(Builder builder) {
+        this.builder = builder;
+        init();
     }
 
-    public static void getInstance(Context context) {
-        if (mImageLoader == null) {
-            synchronized (ImageLoader.class) {
-                if (mImageLoader == null) {
-                    mImageLoader = new ImageLoader(context);
-                }
+    @SuppressLint("CheckResult")
+    public void init() {
+        if (!ObjectUtils.isEmpty(builder.tagetImage)) {
+            Object tagetImage = builder.tagetImage;
+            if (tagetImage instanceof String) {
+                builder.tagetImage = ((String) builder.tagetImage).replaceAll("\\\\", "/");
             }
         }
-    }
-
-    public static void loadImage(Object url, ImageView imageView) {
-        GlideApp.with(mContext).load(url).into(imageView);
-    }
-
-    public static void loadImageCircle(String url, ImageView imageView) {
-        if (url != null) {
-            url = url.replaceAll("\\\\", "/");
-        }
-        GlideApp.with(mContext)
-                .load(url)
+        mGlideRequest = GlideApp.with(builder.context)
+                .load(builder.tagetImage)
+                .error(builder.errImage)
                 .fitCenter()
-                .circleCrop()
-                .into(imageView);
+                .placeholder(builder.placeImage);
+        if (builder.isCircle) {
+            mGlideRequest.circleCrop();
+        }
+    }
+
+    public void create() {
+        mGlideRequest.into(builder.tagetImageView);
+    }
+
+    public static class Builder {
+        boolean isCircle;
+        //占位
+        int placeImage;
+        int errImage;
+        Object tagetImage;
+        ImageView tagetImageView;
+        Context context;
+
+        public Builder(Context context) {
+            this.context = context;
+        }
+
+        public Builder tagetImageUrl(Object tagetImage) {
+            this.tagetImage = tagetImage;
+            return this;
+        }
+
+        public Builder placeImage(int placeImage) {
+            this.placeImage = placeImage;
+            return this;
+        }
+
+        public Builder errImage(int errImage) {
+            this.errImage = errImage;
+            return this;
+        }
+
+        public Builder isCircle(boolean isCircle) {
+            this.isCircle = isCircle;
+            return this;
+        }
+
+        public Builder setTagetImageView(ImageView tagetImageView) {
+            this.tagetImageView = tagetImageView;
+            return this;
+        }
+
+        public ImageLoader build() {
+            return new ImageLoader(this);
+        }
     }
 }

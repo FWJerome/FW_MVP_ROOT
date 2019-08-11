@@ -8,11 +8,8 @@ import com.avos.avoscloud.AVObject;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.Utils;
 import com.fwkj.fw_root_library.logging.LoggingInterceptor;
-import com.fwkj.fw_root_library.utils.ImageLoader;
 
 import java.util.List;
-
-import okhttp3.Interceptor;
 
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
@@ -100,10 +97,6 @@ public class GlobalManager {
         public Builder baseUrl(String url) {
             this.url = url;
             return this;
-        }
-
-        public void configImageLocader(Application application) {
-            ImageLoader.getInstance(application);
         }
 
         @RequiresPermission(WRITE_EXTERNAL_STORAGE)
