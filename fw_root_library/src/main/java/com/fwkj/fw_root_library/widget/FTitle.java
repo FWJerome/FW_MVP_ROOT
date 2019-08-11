@@ -104,7 +104,9 @@ public class FTitle extends LinearLayout {
         mTvRight.setTextSize(ConvertUtils.px2sp(rightTextSize));
         if (rightMargin != -1) {
             ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) mTvRight.getLayoutParams();
+            ConstraintLayout.LayoutParams params1 = (ConstraintLayout.LayoutParams) mImgRight.getLayoutParams();
             params.rightMargin = (int) rightMargin;
+            params1.rightMargin = (int) rightMargin;
         }
 
         mTvProgress.setText(progressText);
