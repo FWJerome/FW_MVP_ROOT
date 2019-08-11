@@ -54,6 +54,7 @@ public class FTitle extends LinearLayout {
         int rightColor = typedArray.getColor(R.styleable.FTitle_rightTextColor, -1);
         boolean rightVisible = typedArray.getBoolean(R.styleable.FTitle_rightTextVisibility, false);
         float rightTextSize = typedArray.getDimension(R.styleable.FTitle_rightTextSize, -1);
+        float rightMargin = typedArray.getDimension(R.styleable.FTitle_rightMargin, -1);
 
         String progressText = typedArray.getString(R.styleable.FTitle_progressText);
 
@@ -94,13 +95,17 @@ public class FTitle extends LinearLayout {
         mTvTitle.setText(title);
         mTvTitle.setTextColor(titleColor);
         mTvTitle.setTextSize(ConvertUtils.px2sp(titleTextSize));
-        if (titleIsBlod){
+        if (titleIsBlod) {
             mTvTitle.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         }
 
         mTvRight.setText(rightText);
         mTvRight.setTextColor(rightColor);
         mTvRight.setTextSize(ConvertUtils.px2sp(rightTextSize));
+        if (rightMargin != -1) {
+            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) mTvRight.getLayoutParams();
+            params.rightMargin = (int) rightMargin;
+        }
 
         mTvProgress.setText(progressText);
 
