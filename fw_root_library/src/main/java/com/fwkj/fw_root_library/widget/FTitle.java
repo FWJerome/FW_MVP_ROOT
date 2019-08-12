@@ -55,6 +55,7 @@ public class FTitle extends LinearLayout {
         boolean rightVisible = typedArray.getBoolean(R.styleable.FTitle_rightTextVisibility, false);
         float rightTextSize = typedArray.getDimension(R.styleable.FTitle_rightTextSize, -1);
         float rightMargin = typedArray.getDimension(R.styleable.FTitle_rightMargin, -1);
+        boolean rightBlod = typedArray.getBoolean(R.styleable.FTitle_rightIsBlod, false);
 
         String progressText = typedArray.getString(R.styleable.FTitle_progressText);
 
@@ -86,6 +87,9 @@ public class FTitle extends LinearLayout {
         }
         if (rightIcon != -1) {
             mImgRight.setImageResource(rightIcon);
+        }
+        if (rightBlod) {
+            mTvRight.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         }
 
         mCardView.setCardBackgroundColor(titleBackGroundColor);

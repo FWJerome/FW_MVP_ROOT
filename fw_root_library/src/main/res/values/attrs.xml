@@ -48,6 +48,7 @@
         <attr name="rightIcon" format="reference" />
         <attr name="rightIconVisibility" format="boolean" />
         <attr name="rightText" format="string" />
+        <attr name="rightIsBlod" format="boolean"/>
         <attr name="rightTextColor" format="color" />
         <attr name="rightMargin" format="dimension" />
         <attr name="rightTextVisibility" format="boolean" />
