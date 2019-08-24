@@ -15,7 +15,7 @@ public class TransformerUtils {
      * @Date 8:48 2019/5/26
      * @Param
      **/
-    public static <T> ObservableTransformer<T, T> transformerUtil(final LifecycleProvider<ActivityEvent> view) {
+    public static <T> ObservableTransformer<T, T> transformerUtil(final LifecycleProvider view) {
         return transformerUtil(view, false);
     }
 
@@ -26,7 +26,7 @@ public class TransformerUtils {
      * @Date 8:48 2019/5/26
      * @Param
      **/
-    public static <T> ObservableTransformer<T, T> transformerUtil(final LifecycleProvider<ActivityEvent> view, final Boolean isShowDialog) {
+    public static <T> ObservableTransformer<T, T> transformerUtil(final LifecycleProvider view, final Boolean isShowDialog) {
         return new ObservableTransformer<T, T>() {
             @Override
             public ObservableSource<T> apply(Observable<T> upstream) {
