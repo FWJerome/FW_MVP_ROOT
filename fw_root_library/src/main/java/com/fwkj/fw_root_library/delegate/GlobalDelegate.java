@@ -50,7 +50,6 @@ public class GlobalDelegate {
         //供参数配置类获取application，和builder
         config.beforeInit();
         config.applyOptions(application, builder);
-        builder.configImageLocader(application);
         return builder.build();
     }
 
