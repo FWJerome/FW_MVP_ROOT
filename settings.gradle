@@ -1,1 +1,1 @@
-include ':app', ':fw_root_library', ':ftablayout','fragmentation-core-androidx','fragmentation-with-androidx'
+include ':app', ':fw_root_library', ':ftablayout'
